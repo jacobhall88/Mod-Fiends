@@ -43,7 +43,7 @@ public class UnitController : MonoBehaviour {
 	public Constants.FACTION GetFaction(){
 		return _faction;
 	}
-	// Use this for initialization
+
 	void Start () {
 
 	}
