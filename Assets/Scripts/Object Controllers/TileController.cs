@@ -49,8 +49,7 @@ public class TileController : MonoBehaviour {
 
 					//check if UI is in move state
 					if (_references.UI_CONTROLLER.UIState == Constants.UISTATE.Move) {
-						UnitController selected = _register.GetSelected ();
-						selected.PlaceUnit (this);
+						_references.UI_CONTROLLER.ConfirmMove (this.gameObject);
 					}
 				}
 			}

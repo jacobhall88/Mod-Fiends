@@ -12,12 +12,15 @@ public class UIController : MonoBehaviour {
 	public GameObject _unitFramesHolder;
 	public GameObject _commandFrame;
 	public Dictionary<GameObject, UnitController> _unitPortraits = new Dictionary<GameObject, UnitController>();
+	public UnitController AttackTarget;
+	public TileController MoveTarget;
 
 	//command buttons
 	public GameObject _attack;
 	public GameObject _move;
 
 	public Constants.UISTATE UIState;
+
 
 
 	// Use this for initialization
@@ -28,6 +31,7 @@ public class UIController : MonoBehaviour {
 		_register = GameObject.Find ("UnitRegisterHolder").GetComponent<UnitRegister> ();
 
 		_references.RegisterUI (this);
+		UIState = Constants.UISTATE.Clear;
 
 	}
 
@@ -119,6 +123,13 @@ public class UIController : MonoBehaviour {
 
 	}
 
+	//call when selecting a new unit or command to clear UIState, targets, etc.
+	public void ClearCommands(){
+		UIState = Constants.UISTATE.Clear;
+		AttackTarget = null;
+	}
+
+	//button onClick functions
 	public void SelectUnit(GameObject portrait){
 
 		_register.SetSelected (_unitPortraits [portrait]);
@@ -126,11 +137,18 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void SelectAttack(){
+		ClearCommands ();
 		UIState = Constants.UISTATE.Attack;
 	}
 
 	public void SelectMove(){
+		ClearCommands ();
 		UIState = Constants.UISTATE.Move;
+	}
+
+	public void ConfirmMove(GameObject tc){
+		TileController tile = tc.GetComponent <TileController> ();
+		_register.GetSelected ().PlaceUnit (tile);
 	}
 	
 	// Update is called once per frame

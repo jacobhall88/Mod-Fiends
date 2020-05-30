@@ -41,22 +41,32 @@ public class UnitRegister : MonoBehaviour {
 	}
 
 	public void SetSelected(UnitController uc){
-		if (_selected != null) _selected.SetSelected (false); 
-		_selected = uc;
-		_selected.SetSelected (true);
-		_references.UI_CONTROLLER.UIState = Constants.UISTATE.Clear;
 
-		//show command frame if friendly, hide otherwise
-		switch (uc.GetFaction ()) {
-		case Constants.FACTION.Friendly:
-			_references.UI_CONTROLLER.ShowCommandFrame ();
-			break;
-		case Constants.FACTION.Hostile:
-			_references.UI_CONTROLLER.HideCommandFrame ();
-			break;
-		case Constants.FACTION.Neutral:
-			_references.UI_CONTROLLER.HideCommandFrame ();
-			break;
+		if (_references.UI_CONTROLLER.UIState != Constants.UISTATE.Attack) {
+			if (_selected != null)
+				_selected.SetSelected (false); 
+			_selected = uc;
+			_selected.SetSelected (true);
+			_references.UI_CONTROLLER.ClearCommands ();
+
+			//show command frame if friendly, hide otherwise
+			switch (uc.GetFaction ()) {
+			case Constants.FACTION.Friendly:
+				_references.UI_CONTROLLER.ShowCommandFrame ();
+				break;
+			case Constants.FACTION.Hostile:
+				_references.UI_CONTROLLER.HideCommandFrame ();
+				break;
+			case Constants.FACTION.Neutral:
+				_references.UI_CONTROLLER.HideCommandFrame ();
+				break;
+			}
+		}
+		//using else if to accomodate potential future UI states
+		else if (_references.UI_CONTROLLER.UIState == Constants.UISTATE.Attack) {
+			if (uc.GetFaction () != Constants.FACTION.Friendly) {
+				_references.UI_CONTROLLER.AttackTarget = uc;
+			}
 		}
 	}
 
