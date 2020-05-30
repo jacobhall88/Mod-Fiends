@@ -44,7 +44,20 @@ public class UnitRegister : MonoBehaviour {
 		if (_selected != null) _selected.SetSelected (false); 
 		_selected = uc;
 		_selected.SetSelected (true);
+		_references.UI_CONTROLLER.UIState = Constants.UISTATE.Clear;
 
+		//show command frame if friendly, hide otherwise
+		switch (uc.GetFaction ()) {
+		case Constants.FACTION.Friendly:
+			_references.UI_CONTROLLER.ShowCommandFrame ();
+			break;
+		case Constants.FACTION.Hostile:
+			_references.UI_CONTROLLER.HideCommandFrame ();
+			break;
+		case Constants.FACTION.Neutral:
+			_references.UI_CONTROLLER.HideCommandFrame ();
+			break;
+		}
 	}
 
 	public UnitController GetSelected(){

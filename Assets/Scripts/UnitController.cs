@@ -77,6 +77,7 @@ public class UnitController : MonoBehaviour {
 		
 	void OnMouseDown(){
 		_register.SetSelected (this);
+
 	}
 	
 	// Update is called once per frame

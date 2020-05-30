@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour {
 	public GameObject _attack;
 	public GameObject _move;
 
+	public Constants.UISTATE UIState;
+
 
 	// Use this for initialization
 	void Start () {
@@ -45,11 +47,18 @@ public class UIController : MonoBehaviour {
 		Button attackButton = _attack.GetComponent <Button> ();
 		Text[] attackButtonText = attackButton.GetComponentsInChildren <Text> ();
 		attackButtonText [0].text = "Attack";
+		attackButton.onClick.AddListener (delegate {
+			SelectAttack();
+		});
 
 		_move = Instantiate (_references.COMMAND_BUTTON);
 		Button moveButton = _move.GetComponent <Button> ();
 		Text[] moveButtonText = moveButton.GetComponentsInChildren <Text> ();
 		moveButtonText [0].text = "Move";
+		moveButton.onClick.AddListener (delegate {
+			SelectMove();
+		});
+
 
 		// TEST CODE - Adding buttons to frame automatically instead of when a friendly unit is selected
 
@@ -58,6 +67,21 @@ public class UIController : MonoBehaviour {
 		_move.GetComponent <Button> ().GetComponent<RectTransform> ().parent = _commandFrame.GetComponent<RectTransform> ();
 
 		// TEST CODE
+
+		HideCommandFrame ();
+
+	}
+
+	public void HideCommandFrame(){
+
+		_commandFrame.SetActive (false);
+
+	}
+
+	public void ShowCommandFrame(){
+
+		_commandFrame.SetActive (true);
+
 	}
 
 	public void BuildUnitFrame(){
@@ -99,6 +123,14 @@ public class UIController : MonoBehaviour {
 
 		_register.SetSelected (_unitPortraits [portrait]);
 
+	}
+
+	public void SelectAttack(){
+		UIState = Constants.UISTATE.Attack;
+	}
+
+	public void SelectMove(){
+		UIState = Constants.UISTATE.Move;
 	}
 	
 	// Update is called once per frame

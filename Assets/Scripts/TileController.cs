@@ -47,8 +47,11 @@ public class TileController : MonoBehaviour {
 				//confirm a friendly unit is selected
 				if (_register.GetSelected ().GetFaction () == Constants.FACTION.Friendly) {
 
-					UnitController selected = _register.GetSelected ();
-					selected.PlaceUnit (this);
+					//check if UI is in move state
+					if (_references.UI_CONTROLLER.UIState == Constants.UISTATE.Move) {
+						UnitController selected = _register.GetSelected ();
+						selected.PlaceUnit (this);
+					}
 				}
 			}
 		}
