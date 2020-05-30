@@ -17,6 +17,13 @@ public class Constants : MonoBehaviour {
 	public enum FACTION{Friendly, Hostile, Neutral};
 	public enum UISTATE{Attack, Move};
 
+	//UI Sizes
+	//represented as percentage of total UI size
+	public float UNIT_FRAME_WIDTH;
+	public float UNIT_FRAME_HEIGHT;
+	public float COMMAND_FRAME_HEIGHT;
+	public float COMMAND_FRAME_WIDTH;
+
 	// Use this for initialization
 	void Start () {
 

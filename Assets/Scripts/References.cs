@@ -11,6 +11,7 @@ public class References : MonoBehaviour {
 	public GameObject MASTER_TILE;
 	public GameObject MASTER_UNIT;
 	public GameObject MASTER_UNIT_FRAME;
+	public GameObject COMMAND_BUTTON;
 	public UnitRegister UNIT_REGISTER;
 	public CameraController CAMERA_CONTROLLER;
 	public UIController UI_CONTROLLER;

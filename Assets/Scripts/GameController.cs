@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 		_field.BuildField (_constants.FIELD_HEIGHT, _constants.FIELD_WIDTH);
 		_field.TestUnitPlacement ();
 		_references.UI_CONTROLLER.BuildUnitFrame();
+		_references.UI_CONTROLLER.BuildCommandFrame ();
 	}
 	
 	// Update is called once per frame
