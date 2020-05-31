@@ -514,8 +514,8 @@ MonoBehaviour:
   CAMERA_ROTATE_SPEED: 15
   UNIT_FRAME_WIDTH: 0.8
   UNIT_FRAME_HEIGHT: 0.15
-  COMMAND_FRAME_HEIGHT: 0.8
-  COMMAND_FRAME_WIDTH: 0.1
+  COMMAND_FRAME_HEIGHT: 0.1
+  COMMAND_FRAME_WIDTH: 0.6
 --- !u!4 &956448696
 Transform:
   m_ObjectHideFlags: 0
@@ -964,5 +964,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitFramesHolder: {fileID: 0}
   _commandFrame: {fileID: 0}
+  AttackTarget: {fileID: 0}
+  MoveTarget: {fileID: 0}
   _attack: {fileID: 0}
   _move: {fileID: 0}
+  UIState: 0

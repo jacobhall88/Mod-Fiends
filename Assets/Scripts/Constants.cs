@@ -16,6 +16,7 @@ public class Constants : MonoBehaviour {
 	public float CAMERA_ROTATE_SPEED;
 	public enum FACTION{Friendly, Hostile, Neutral};
 	public enum UISTATE{Attack, Move, Clear};
+	public enum ATYPE{Ranged, Melee, Burst, Cone, Line};
 
 	//UI Sizes
 	//represented as percentage of total UI size

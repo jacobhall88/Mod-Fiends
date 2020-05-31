@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour {
 
 		//set command frame position and size
 		RectTransform uiRect = this.GetComponent<RectTransform> ();
-		commandRect.sizeDelta = new Vector2 (uiRect.sizeDelta.x * _constants.UNIT_FRAME_WIDTH, uiRect.sizeDelta.y * _constants.UNIT_FRAME_HEIGHT);
+		commandRect.sizeDelta = new Vector2 (uiRect.sizeDelta.x * _constants.COMMAND_FRAME_WIDTH, uiRect.sizeDelta.y * _constants.COMMAND_FRAME_HEIGHT);
 		commandRect.anchoredPosition = new Vector2 (0, _unitFramesHolder.GetComponent<RectTransform>().sizeDelta.y + commandRect.sizeDelta.y / 2);
 
 		//create command buttons
